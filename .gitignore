@@ -6,6 +6,16 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+.idea/
+*.iml
+.DS_STORE
+
+# package directories
+jspm_packages
+
+# Serverless directories
+.serverless
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 

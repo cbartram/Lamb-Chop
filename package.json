@@ -1,0 +1,35 @@
+{
+  "name": "lambda-api-router",
+  "version": "1.0.0",
+  "description": "API Lambda function for the WaitSmart App",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "start:dev": "nodemon ./src/index.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cbartram/Lambda-API-Router.git"
+  },
+  "keywords": [
+    "lambda",
+    "node",
+    "serverless",
+    "api",
+    "express",
+    "wait",
+    "smart",
+    "parks"
+  ],
+  "author": "cbartram",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cbartram/Lambda-API-Router/issues"
+  },
+  "homepage": "https://github.com/cbartram/Lambda-API-Router#readme",
+  "dependencies": {
+    "merge-descriptors": "^1.0.1",
+    "path-to-regexp": "^6.1.0"
+  }
+}

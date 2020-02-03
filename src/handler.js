@@ -1,18 +1,34 @@
-'use strict';
+const Router = require('./router');
 
-module.exports.hello = async event => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
-      },
-      null,
-      2
-    ),
-  };
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
-};
+/**
+ * Inits the Application in an Express-like fashion
+ */
+class App {
+    constructor() {
+        this._methods = ['get','post','put','patch','delete','options','head','any'];
+        this._methods.forEach(method => {
+            this[method] = (path, fn) => {
+                const route = new Router(method, path);
+                console.log('Route: ', route);
+                if(route.match(this._req)) {
+                    fn()
+                }
+                return this;
+            };
+        });
+
+        this._res = {
+            json: () => {},
+            // TODO Add additional methods users can call on the response
+        };
+        return this;
+    }
+
+    run(event) {
+        this._req = event;
+    }
+}
+
+module.exports = App;
+

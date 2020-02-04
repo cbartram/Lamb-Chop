@@ -3,7 +3,8 @@ const Api = require('./src/handler');
 const app = new Api();
 
 app.get('/foo/bar', (req, res) => {
-    console.log('Executed GET on /foo/bar')
+    console.log('Executed GET on /foo/bar');
+    return res.json({ success: true });
 });
 
 app.post('/foo/bar', (req, res) => {
@@ -20,11 +21,15 @@ app.get('/test', (req, res) => {
 
 
 /**
- * Core body of the lambda function
+ * Core body of the lambda function which
+ * listens for any incoming events and matches them against the
+ * registered routes
+ * @param event Object the Lambda Event Http proxy
+ * @param context Object Lambda context object
  */
 exports.handler = async (event, context) => {
     console.log('[INFO] Received event:', JSON.stringify(event, null, 2));
-    return app.run(event, context)
+    return app.listen(event, context);
 };
 
 

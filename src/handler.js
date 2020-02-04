@@ -28,13 +28,15 @@ class App {
         return this;
     }
 
-    run(event, context) {
+    listen(event, context) {
         let matched = false;
+        this._response = null; // The users actual response data given from this._res.json() etc... todo find a way to say res.json(...) instead of return res.json(...)
         this._routes.forEach(({ route, fn }) => {
             if(route.match(event)) {
                 matched = true;
                 console.log('Event is triggering the route: ', route);
-                return fn(event, this._res);
+                this._response = fn(event, this._res);
+                console.log('Actual response from user: ', this._response)
             }
         });
 
@@ -49,6 +51,8 @@ class App {
                 }
             }
         }
+
+        return this._response;
     }
 }
 

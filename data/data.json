@@ -1,29 +1,25 @@
 {
-  "resource": "/users/find",
-  "path": "/users/find",
-  "httpMethod": "POST",
+  "resource": "/{proxy+}",
+  "path": "/foo/bar",
+  "httpMethod": "GET",
   "headers": {
-    "accept": "application/json",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
     "accept-encoding": "gzip, deflate, br",
     "accept-language": "en-US,en;q=0.9",
-    "Authorization": "eyJraWQiOiJFWDQ1ek14aE11UVE4YURMVGFGRG55dEdJUjA5ZGY4WjlhY1lVeUwxN0NVPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIzNTg2ZDJkMC0xZDg4LTQ2NmUtYmJjZS1mNzhhYTFlMWYyMDkiLCJhdWQiOiI1N2dhODg3ZXNnM2o3dDJyODlocjlua240YyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJldmVudF9pZCI6ImFlOGZlNzg1LWQ1MzEtNGM1ZS04NzFkLThkYjBiYzQ0YTVhMCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNTgwNDEwNDk0LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9ZRWFOZzlpUnUiLCJuYW1lIjoiSmFzb24gQm95a2luIiwiY29nbml0bzp1c2VybmFtZSI6IjM1ODZkMmQwLTFkODgtNDY2ZS1iYmNlLWY3OGFhMWUxZjIwOSIsImV4cCI6MTU4MDQxNDA5NywiaWF0IjoxNTgwNDEwNDk3LCJlbWFpbCI6Imphc29uYm95a2luQGdtYWlsLmNvbSJ9.BWFjk4ZMlVZdkKDO-LIRki2so2wI759vIv3W8xllj_Rk22UqSp05ybAEipFSzErfFn83RUhL1dogc834dTAArYCIcrqE8qsulBiWkh0gAQkRwtgs1_z6h1VfrKPrVUPDZvIerE2ubAdB6lShRnkZRyg2CJTqJLyKO7olgebTcMu7csdIZ_Sc5spv3GVQojwmrGVouTzzq2wysTHFAMmcLja-ttCR4jrg_hXtX_y-Ly7snAjgFmaszAAzu328QXXG5GcLoio-bCFut9sAWU-AJAG1DESxGoEGs6iYfvvTmp18ELVFx74ZPKJEOunnHJl60fA9WMjbAVTkwbMhpTb_Lg",
-    "content-type": "application/json",
-    "dnt": "1",
-    "Host": "2147bwmah5.execute-api.us-east-1.amazonaws.com",
-    "origin": "https://ignitecode.net",
-    "referer": "https://ignitecode.net/videos",
-    "sec-fetch-mode": "cors",
-    "sec-fetch-site": "cross-site",
+    "Host": "a9y4qru7dg.execute-api.us-east-1.amazonaws.com",
+    "sec-fetch-mode": "navigate",
+    "sec-fetch-site": "none",
+    "sec-fetch-user": "?1",
+    "upgrade-insecure-requests": "1",
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36",
-    "X-Amzn-Trace-Id": "Root=1-5e332682-d91c12d80fb23704b07ff3d4",
-    "x-api-key": "mNer7Typlc9npqrkThXZ08xAIWoBXLyG2NEfHDd2",
-    "X-Forwarded-For": "107.77.204.236",
+    "X-Amzn-Trace-Id": "Root=1-5e38c38a-c13a42aced4df00cd4b2b468",
+    "X-Forwarded-For": "108.18.229.112",
     "X-Forwarded-Port": "443",
     "X-Forwarded-Proto": "https"
   },
   "multiValueHeaders": {
     "accept": [
-      "application/json"
+      "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
     ],
     "accept-encoding": [
       "gzip, deflate, br"
@@ -31,41 +27,29 @@
     "accept-language": [
       "en-US,en;q=0.9"
     ],
-    "Authorization": [
-      "eyJraWQiOiJFWDQ1ek14aE11UVE4YURMVGFGRG55dEdJUjA5ZGY4WjlhY1lVeUwxN0NVPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIzNTg2ZDJkMC0xZDg4LTQ2NmUtYmJjZS1mNzhhYTFlMWYyMDkiLCJhdWQiOiI1N2dhODg3ZXNnM2o3dDJyODlocjlua240YyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJldmVudF9pZCI6ImFlOGZlNzg1LWQ1MzEtNGM1ZS04NzFkLThkYjBiYzQ0YTVhMCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNTgwNDEwNDk0LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9ZRWFOZzlpUnUiLCJuYW1lIjoiSmFzb24gQm95a2luIiwiY29nbml0bzp1c2VybmFtZSI6IjM1ODZkMmQwLTFkODgtNDY2ZS1iYmNlLWY3OGFhMWUxZjIwOSIsImV4cCI6MTU4MDQxNDA5NywiaWF0IjoxNTgwNDEwNDk3LCJlbWFpbCI6Imphc29uYm95a2luQGdtYWlsLmNvbSJ9.BWFjk4ZMlVZdkKDO-LIRki2so2wI759vIv3W8xllj_Rk22UqSp05ybAEipFSzErfFn83RUhL1dogc834dTAArYCIcrqE8qsulBiWkh0gAQkRwtgs1_z6h1VfrKPrVUPDZvIerE2ubAdB6lShRnkZRyg2CJTqJLyKO7olgebTcMu7csdIZ_Sc5spv3GVQojwmrGVouTzzq2wysTHFAMmcLja-ttCR4jrg_hXtX_y-Ly7snAjgFmaszAAzu328QXXG5GcLoio-bCFut9sAWU-AJAG1DESxGoEGs6iYfvvTmp18ELVFx74ZPKJEOunnHJl60fA9WMjbAVTkwbMhpTb_Lg"
-    ],
-    "content-type": [
-      "application/json"
-    ],
-    "dnt": [
-      "1"
-    ],
     "Host": [
-      "2147bwmah5.execute-api.us-east-1.amazonaws.com"
-    ],
-    "origin": [
-      "https://ignitecode.net"
-    ],
-    "referer": [
-      "https://ignitecode.net/videos"
+      "a9y4qru7dg.execute-api.us-east-1.amazonaws.com"
     ],
     "sec-fetch-mode": [
-      "cors"
+      "navigate"
     ],
     "sec-fetch-site": [
-      "cross-site"
+      "none"
+    ],
+    "sec-fetch-user": [
+      "?1"
+    ],
+    "upgrade-insecure-requests": [
+      "1"
     ],
     "User-Agent": [
       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
     ],
     "X-Amzn-Trace-Id": [
-      "Root=1-5e332682-d91c12d80fb23704b07ff3d4"
-    ],
-    "x-api-key": [
-      "mNer7Typlc9npqrkThXZ08xAIWoBXLyG2NEfHDd2"
+      "Root=1-5e38c38a-c13a42aced4df00cd4b2b468"
     ],
     "X-Forwarded-For": [
-      "107.77.204.236"
+      "108.18.229.112"
     ],
     "X-Forwarded-Port": [
       "443"
@@ -76,56 +60,40 @@
   },
   "queryStringParameters": null,
   "multiValueQueryStringParameters": null,
-  "pathParameters": null,
+  "pathParameters": {
+    "proxy": "foo/bar"
+  },
   "stageVariables": null,
   "requestContext": {
-    "resourceId": "aamyhg",
-    "authorizer": {
-      "claims": {
-        "sub": "3586d2d0-1d88-466e-bbce-f78aa1e1f209",
-        "aud": "57ga887esg3j7t2r89hr9nkn4c",
-        "email_verified": "true",
-        "event_id": "ae8fe785-d531-4c5e-871d-8db0bc44a5a0",
-        "token_use": "id",
-        "auth_time": "1580410494",
-        "iss": "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_YEaNg9iRu",
-        "name": "Jason Boykin",
-        "cognito:username": "3586d2d0-1d88-466e-bbce-f78aa1e1f209",
-        "exp": "Thu Jan 30 19:54:57 UTC 2020",
-        "iat": "Thu Jan 30 18:54:57 UTC 2020",
-        "email": "jasonboykin@gmail.com"
-      }
-    },
-    "resourcePath": "/users/find",
-    "httpMethod": "POST",
-    "extendedRequestId": "HIL0YGVJoAMFUfw=",
-    "requestTime": "30/Jan/2020:18:54:58 +0000",
-    "path": "/prod/users/find",
+    "resourceId": "fo9td5",
+    "resourcePath": "/{proxy+}",
+    "httpMethod": "GET",
+    "extendedRequestId": "HWN9qGICoAMF-cA=",
+    "requestTime": "04/Feb/2020:01:06:18 +0000",
+    "path": "/dev/foo/bar",
     "accountId": "563409647327",
     "protocol": "HTTP/1.1",
-    "stage": "prod",
-    "domainPrefix": "2147bwmah5",
-    "requestTimeEpoch": 1580410498388,
-    "requestId": "343c39ae-1b5f-4840-8292-9a9d1fc7b36b",
+    "stage": "dev",
+    "domainPrefix": "a9y4qru7dg",
+    "requestTimeEpoch": 1580778378522,
+    "requestId": "e9a7e2eb-4432-4770-b19a-a67b528bd113",
     "identity": {
       "cognitoIdentityPoolId": null,
-      "cognitoIdentityId": null,
-      "apiKey": "mNer7Typlc9npqrkThXZ08xAIWoBXLyG2NEfHDd2",
-      "principalOrgId": null,
-      "cognitoAuthenticationType": null,
-      "userArn": null,
-      "apiKeyId": "0txbydx4yi",
-      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36",
       "accountId": null,
+      "cognitoIdentityId": null,
       "caller": null,
-      "sourceIp": "107.77.204.236",
+      "sourceIp": "108.18.229.112",
+      "principalOrgId": null,
       "accessKey": null,
+      "cognitoAuthenticationType": null,
       "cognitoAuthenticationProvider": null,
+      "userArn": null,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36",
       "user": null
     },
-    "domainName": "2147bwmah5.execute-api.us-east-1.amazonaws.com",
-    "apiId": "2147bwmah5"
+    "domainName": "a9y4qru7dg.execute-api.us-east-1.amazonaws.com",
+    "apiId": "a9y4qru7dg"
   },
-  "body": "{\"username\":\"user-3586d2d0-1d88-466e-bbce-f78aa1e1f209\"}",
+  "body": null,
   "isBase64Encoded": false
 }

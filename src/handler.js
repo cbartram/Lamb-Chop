@@ -7,13 +7,10 @@ const Router = require('./router');
 class App {
     constructor() {
         this._methods = ['get','post','put','patch','delete','options','head','any'];
+        this._routes = [];
         this._methods.forEach(method => {
             this[method] = (path, fn) => {
-                const route = new Router(method, path);
-                console.log('Route: ', route);
-                if(route.match(this._req)) {
-                    fn()
-                }
+                this._routes.push({ route: new Router(method, path), fn });
                 return this;
             };
         });
@@ -26,7 +23,13 @@ class App {
     }
 
     run(event) {
-        this._req = event;
+        this._routes.forEach(({ route, fn }) => {
+            console.log('Registered routes: ', route);
+            if(route.match(event)) {
+                console.log('Event is triggering the route: ', route);
+                fn(event, this._res);
+            }
+        })
     }
 }
 

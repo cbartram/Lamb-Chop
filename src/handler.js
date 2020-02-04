@@ -8,6 +8,7 @@ class App {
     constructor() {
         this._methods = ['get','post','put','patch','delete','options','head','any'];
         this._routes = [];
+        this._middleware = [];
         this._methods.forEach(method => {
             this[method] = (path, fn) => {
                 this._routes.push({ route: new Router(method, path), fn });
@@ -17,19 +18,39 @@ class App {
 
         this._response = null;
         this._res = {
+            status: (statusCode) => {
+              this._response = {
+                  ...this._response,
+                  statusCode,
+              };
+              return this._res;
+            },
+            send: (data) => {
+              this._response = { ...this._response, ...data };
+              return this._res;
+            },
             json: (data) => {
+                if(!this._response) this._response = { statusCode: 200 };
                 this._response = {
-                    statusCode: 200,
+                    ...this._response,
                     body: JSON.stringify(data),
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     }
                 };
+                return this._res;
             },
             // TODO Add additional methods users can call on the response
         };
         return this;
+    }
+
+    use(fn) {
+        if (typeof fn !== 'function') {
+            throw new Error('Middleware must be a function.')
+        }
+        this._middleware.push(fn);
     }
 
     async listen(event, context) {

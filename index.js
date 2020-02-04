@@ -1,6 +1,4 @@
-const event = require('../data/data');
-const Api = require('./handler');
-
+const Api = require('./src/handler');
 
 const app = new Api();
 
@@ -20,4 +18,13 @@ app.get('/test', (req, res) => {
     console.log('Executed GET on /test')
 });
 
-app.run(event);
+
+/**
+ * Core body of the lambda function
+ */
+exports.handler = async (event, context) => {
+    console.log('[INFO] Received event:', JSON.stringify(event, null, 2));
+    return app.run(event, context)
+};
+
+

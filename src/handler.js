@@ -16,20 +16,39 @@ class App {
         });
 
         this._res = {
-            json: () => {},
+            json: (data) => ({
+                statusCode: 200,
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }}),
             // TODO Add additional methods users can call on the response
         };
         return this;
     }
 
-    run(event) {
+    run(event, context) {
+        let matched = false;
         this._routes.forEach(({ route, fn }) => {
-            console.log('Registered routes: ', route);
             if(route.match(event)) {
+                matched = true;
                 console.log('Event is triggering the route: ', route);
-                fn(event, this._res);
+                return fn(event, this._res);
             }
-        })
+        });
+
+        if(!matched) {
+            console.log('[INFO] No routes matched');
+            return {
+                statusCode: 404,
+                body: '404 The incoming request did not match any known routes.',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            }
+        }
     }
 }
 

@@ -4,8 +4,8 @@
   "description": "API Lambda function for the WaitSmart App",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/index.js",
-    "start:dev": "nodemon ./src/index.js",
+    "start": "node index.js",
+    "start:dev": "nodemon index.js",
     "test": "mocha"
   },
   "repository": {
@@ -30,6 +30,8 @@
   "homepage": "https://github.com/cbartram/Lambda-API-Router#readme",
   "dependencies": {
     "merge-descriptors": "^1.0.1",
-    "path-to-regexp": "^6.1.0"
+    "path-to-regexp": "^6.1.0",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.8"
   }
 }

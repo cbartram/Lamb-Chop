@@ -6,8 +6,8 @@ const app = new Api();
 app.get('/foo/bar', async (req, res) => {
     console.log('Executed GET on /foo/bar');
 
-    // const response = await request('http://www.google.com');
-    res.json({ success: true, test: 'Its working!' });
+    const response = await request('http://google.com');
+    res.json({ success: true, test: 'Its working!', response: response.substring(0, 21) });
 });
 
 app.post('/foo/bar', (req, res) => {

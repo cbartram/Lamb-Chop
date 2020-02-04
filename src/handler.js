@@ -32,8 +32,9 @@ class App {
         return this;
     }
 
-    listen(event, context) {
+    async listen(event, context) {
         let matched = false;
+        this._response = null;
 
         // Must break out of the loop after we match the first route
         // so that we don't accidentally execute more than 1 route
@@ -42,7 +43,7 @@ class App {
             if(route.match(event)) {
                 matched = true;
                 console.log('Event is triggering the route: ', route);
-                fn(event, this._res);
+                await fn(event, this._res);
                 console.log('Actual response from user: ', this._response);
                 break;
             }

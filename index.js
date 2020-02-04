@@ -1,10 +1,13 @@
 const Api = require('./src/handler');
+const request = require('request-promise-native');
 
 const app = new Api();
 
-app.get('/foo/bar', (req, res) => {
+app.get('/foo/bar', async (req, res) => {
     console.log('Executed GET on /foo/bar');
-    return res.json({ success: true });
+
+    // const response = await request('http://www.google.com');
+    res.json({ success: true, test: 'Its working!' });
 });
 
 app.post('/foo/bar', (req, res) => {

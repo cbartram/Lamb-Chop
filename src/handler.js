@@ -15,14 +15,18 @@ class App {
             };
         });
 
+        this._response = null;
         this._res = {
-            json: (data) => ({
-                statusCode: 200,
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }}),
+            json: (data) => {
+                this._response = {
+                    statusCode: 200,
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                };
+            },
             // TODO Add additional methods users can call on the response
         };
         return this;
@@ -30,15 +34,21 @@ class App {
 
     listen(event, context) {
         let matched = false;
-        this._response = null; // The users actual response data given from this._res.json() etc... todo find a way to say res.json(...) instead of return res.json(...)
-        this._routes.forEach(({ route, fn }) => {
+
+        // Must break out of the loop after we match the first route
+        // so that we don't accidentally execute more than 1 route
+        for(let i = 0; i < this._routes.length; i++) {
+            const { route, fn } = this._routes[i];
             if(route.match(event)) {
                 matched = true;
                 console.log('Event is triggering the route: ', route);
-                this._response = fn(event, this._res);
-                console.log('Actual response from user: ', this._response)
+                fn(event, this._res);
+                console.log('Actual response from user: ', this._response);
+                break;
             }
-        });
+        }
+
+        console.log('this._response = ', this._response);
 
         if(!matched) {
             console.log('[INFO] No routes matched');

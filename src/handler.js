@@ -29,19 +29,34 @@ class App {
               this._response = { ...this._response, ...data };
               return this._res;
             },
-            json: (data) => {
-                if(!this._response) this._response = { statusCode: 200 };
+            headers: (headers) => {
                 this._response = {
                     ...this._response,
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    }
+                    headers,
                 };
                 return this._res;
             },
-            // TODO Add additional methods users can call on the response
+            json: (data) => {
+                if(!this._response) {
+                    this._response = {
+                        statusCode: 200,
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        }
+                    };
+                }
+                this._response = {
+                    ...this._response,
+                    headers: {
+                        ...this._response.headers,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data),
+                };
+                return this._res;
+            },
         };
         return this;
     }
@@ -61,7 +76,13 @@ class App {
         // so that we don't accidentally execute more than 1 route
         for(let i = 0; i < this._routes.length; i++) {
             const { route, fn } = this._routes[i];
-            if(route.match(event)) {
+            const match = route.match(event);
+            if(match) {
+                event = {
+                    ...event,
+                    query: event.queryStringParameters,
+                    params: match.params
+                };
                 matched = true;
                 console.log('Event is triggering the route: ', route);
                 await fn(event, this._res);

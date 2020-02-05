@@ -3,23 +3,11 @@ const request = require('request-promise-native');
 
 const app = new Api();
 
-app.get('/foo/bar', async (req, res) => {
-    console.log('Executed GET on /foo/bar');
+app.get('/foo/:bar', async (req, res) => {
+    console.log('Executed GET on /foo/:bar with params: ', req.params);
 
     const response = await request('http://google.com');
     res.json({ success: true, test: 'Its working!', response: response.substring(0, 21) });
-});
-
-app.post('/foo/bar', (req, res) => {
-    console.log('Executed POST on /foo/bar')
-});
-
-app.post('/users/find', (req, res) => {
-    console.log('Executed POST on /users/find')
-});
-
-app.get('/test', (req, res) => {
-    console.log('Executed GET on /test')
 });
 
 

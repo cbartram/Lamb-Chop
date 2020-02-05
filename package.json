@@ -1,7 +1,7 @@
 {
-  "name": "lambda-api-router",
+  "name": "lamb-chop",
   "version": "1.0.0",
-  "description": "API Lambda function for the WaitSmart App",
+  "description": "Write serverless code like a traditional express application",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cbartram/Lambda-API-Router.git"
+    "url": "git+https://github.com/cbartram/Lamb-Chop.git"
   },
   "keywords": [
     "lambda",
@@ -25,14 +25,11 @@
   "author": "cbartram",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cbartram/Lambda-API-Router/issues"
+    "url": "https://github.com/cbartram/Lamb-Chop/issues"
   },
-  "homepage": "https://github.com/cbartram/Lambda-API-Router#readme",
+  "homepage": "https://github.com/cbartram/Lamb-Chop#README",
   "dependencies": {
-    "merge-descriptors": "^1.0.1",
-    "path-to-regexp": "^6.1.0",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.8"
+    "path-to-regexp": "^6.1.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",

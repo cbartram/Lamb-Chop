@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="https://i.imgur.com/UJFWYj3.png" />
+</p>
+
 # Lamb Chop
 Lamb Chop provides an elegant and expressive syntax for using a single Lambda function as a proxy service for API Gateway routes. Write serverless code 
 in a server oriented manner.

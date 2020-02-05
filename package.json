@@ -1,5 +1,5 @@
 {
-  "name": "lamb-chop",
+  "name": "lambda-api-router",
   "version": "1.0.0",
   "description": "Write serverless code like a traditional express application",
   "main": "src/index.js",

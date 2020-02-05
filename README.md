@@ -23,7 +23,7 @@ npm i --save lamb-chop
 Check out the following example for using the service in a live system:
 
 ```javascript
-const Api = require('lamb-chop');
+const Api = require('lambda-api-router');
 const app = new Api();
 
 app.get('/foo/bar', (req, res) => {
@@ -51,7 +51,7 @@ exports.handler = async (event, context) => app.listen(event, context);
 You can also use asynchronous actions and promises within your route handlers:
 
 ```javascript
-const Api = require('lamb-chop');
+const Api = require('lambda-api-router');
 const request = require('request-promise-native');
 
 const app = new Api();
@@ -85,7 +85,7 @@ exports.handler = (event, context) => app.listen(event, context);
 You can easily access query and request parameters through `req.query` and `req.params` respectively.
 
 ```javascript
-const Api = require('lamb-chop');
+const Api = require('lambda-api-router');
 
 const app = new Api();
 

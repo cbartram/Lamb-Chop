@@ -1,4 +1,4 @@
-const Router = require('./src/router');
+const Router = require('./router');
 
 /**
  * Inits the Application in an Express-like fashion

@@ -9,6 +9,7 @@ lerna-debug.log*
 .idea/
 *.iml
 .DS_STORE
+lib/
 
 # package directories
 jspm_packages

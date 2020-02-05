@@ -33,5 +33,9 @@
     "path-to-regexp": "^6.1.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.8"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.0.1"
   }
 }

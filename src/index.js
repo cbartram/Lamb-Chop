@@ -83,9 +83,7 @@ class App {
                     params: match.params
                 };
                 matched = true;
-                console.log('Event is triggering the route: ', route);
                 await fn(event, this._res);
-                console.log('Actual response from user: ', this._response);
                 break;
             }
         }
@@ -93,7 +91,6 @@ class App {
         console.log('this._response = ', this._response);
 
         if(!matched) {
-            console.log('[INFO] No routes matched');
             return {
                 statusCode: 404,
                 body: '404 The incoming request did not match any known routes.',

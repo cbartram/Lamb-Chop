@@ -87,9 +87,6 @@ class App {
                 break;
             }
         }
-
-        console.log('this._response = ', this._response);
-
         if(!matched) {
             return {
                 statusCode: 404,

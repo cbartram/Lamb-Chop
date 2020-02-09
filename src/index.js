@@ -62,9 +62,8 @@ class App {
 
     cors() {
         this._response = {
-            ...this._response,
+            statusCode: 200,
             headers: {
-                ...this._response.headers,
                 "Access-Control-Allow-Origin" : "*",
                 "Access-Control-Allow-Credentials": true
             }

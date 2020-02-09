@@ -60,6 +60,17 @@ class App {
         return this;
     }
 
+    cors() {
+        this._response = {
+            ...this._response,
+            headers: {
+                ...this._response.headers,
+                "Access-Control-Allow-Origin" : "*",
+                "Access-Control-Allow-Credentials": true
+            }
+        }
+    }
+
     use(fn) {
         if (typeof fn !== 'function') {
             throw new Error('Middleware must be a function.')
@@ -69,8 +80,6 @@ class App {
 
     async listen(event, context) {
         let matched = false;
-        this._response = null;
-
         // Must break out of the loop after we match the first route
         // so that we don't accidentally execute more than 1 route
         for(let i = 0; i < this._routes.length; i++) {

@@ -42,6 +42,17 @@ describe('Router Tests', () => {
         done();
     });
 
+    it('Correctly parses path params', (done) => {
+        const router = new Router('GET', '/foo/:param');
+        expect(router).to.be.a('object');
+        const matches = router.match({
+            httpMethod: 'GET',
+            path: '/foo/1'
+        });
+        expect(matches).to.be.a('object').that.deep.equals({ path: '/foo/1', index: 0, params: { param: "1" } });
+        done();
+    });
+
     it('Returns the given path and route', (done) => {
         const router = new Router('GET', '/foo');
         expect(router).to.be.a('object');

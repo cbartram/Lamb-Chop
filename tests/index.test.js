@@ -5,6 +5,7 @@ const App = require('../src/index');
 describe('Index Tests', () => {
    it('Successfully creates new Application', (done) => {
        const app = new App();
+       console.log(app);
        expect(app).to.be.a('object');
        expect(app.cors).to.be.a('function');
        done();
@@ -155,6 +156,32 @@ describe('Index Tests', () => {
             statusCode: 200,
             body: "{\"func\":\"called\"}",
             headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            }
+        });
+    });
+
+
+    it('Calls middleware functions in order of registration if they exist.', async () => {
+        const app = new App();
+        app.post('/foo', (req, res) => {
+            res.json({ func: 'called' })
+        });
+        app.use((event, res) => {
+           res.headers({
+               'X-Middleware-Active': 'true',
+           });
+        });
+        const response = await app.listen({
+            httpMethod: 'POST',
+            path: '/foo/'
+        }, null);
+
+        expect(response).to.be.a('object').that.deep.equals({
+            body: "{\"func\":\"called\"}",
+            headers: {
+                'X-Middleware-Active': 'true',
                 'Content-Type': 'application/json',
                 Accept: 'application/json'
             }

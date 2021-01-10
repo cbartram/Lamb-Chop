@@ -17,7 +17,7 @@ information on setting up your lambda function as a proxy service.
 You can install this package through NPM with
 
 ```
-npm i --save lamb-chop
+npm i --save lambda-api-router
 ```
 
 Check out the following example for using the service in a live system:
@@ -88,6 +88,56 @@ You can easily access query and request parameters through `req.query` and `req.
 const Api = require('lambda-api-router');
 
 const app = new Api();
+
+app.get('/foo/bar', (req, res) => {
+    const headers = { 
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+    };
+   
+    res.headers(headers)
+       .status(200)
+       .json({ query: req.query, params: req.params });
+});
+
+exports.handler = (event, context) => app.listen(event, context);
+```
+
+## Set Response Status & Headers
+
+You can also add middleware to your routes. Middleware is simply a function which has access to the request and response objects
+which execute before the actual route handler is executed. Middleware is useful for things like checking authentication, adding headers,
+logging and other common web tasks.
+
+You can register middleware using the `use` function like so:
+
+```javascript
+const Api = require('lambda-api-router');
+const jwt = require('jsonwebtoken');
+
+const app = new Api();
+
+// Logging Middleware
+app.use((req, res) => {
+    console.log(`[${req.httpMethod}] -- ${req.path} --`);
+});
+
+// Custom header Middleware
+app.use((req, res) => {
+    res.headers({
+       'X-Custom-Header': 'my-custom-value', 
+    });
+});
+
+// Authentication Middleware
+app.use((req, res) => {
+    const token = req.body.token;
+    jwt.verify(token, 'shhhhh', function(err, decoded) {
+        console.log(decoded.foo) // bar
+        // if decoded.foo => proceed with request
+        // else return res.error({ ... });
+    });
+});
 
 app.get('/foo/bar', (req, res) => {
     const headers = { 
